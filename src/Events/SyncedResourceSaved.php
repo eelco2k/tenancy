@@ -16,7 +16,7 @@ class SyncedResourceSaved
     /** @var TenantWithDatabase|Model|null */
     public $tenant;
 
-    public function __construct(Syncable $model, ?TenantWithDatabase $tenant)
+    public function __construct(Syncable&Model $model, ?TenantWithDatabase $tenant)
     {
         $this->model = $model;
         $this->tenant = $tenant;
