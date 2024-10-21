@@ -20,12 +20,14 @@ jobs:
           php: "8.0"
         - laravel: 10
           php: "8.1"
+        - laravel: 11
+          php: "8.3"
 
     steps:
     - uses: actions/checkout@v2
     - name: Start docker containers
-      run: PHP_VERSION=${{ matrix.php }} docker-compose up -d
+      run: PHP_VERSION=${{ matrix.php }} docker compose up -d
     - name: Install dependencies
-      run: docker-compose exec -T test composer require --no-interaction "laravel/framework:^${{ matrix.laravel }}.0"
+      run: docker compose exec -T test composer require --no-interaction "laravel/framework:^${{ matrix.laravel }}.0"
     - name: Run tests
       run: ./test
